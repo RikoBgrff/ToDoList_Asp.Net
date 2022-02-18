@@ -1,0 +1,121 @@
+﻿@model IndexViewModel
+@{
+	ViewData["Title"] = "Index";
+}
+
+@*<div class="text-center">
+	<h1 class="display-4">Welcome!</h1>
+	</div>
+	<ul>
+
+	@foreach (var item in Model.Works)
+	{
+	<li><a> @item.Id - @item.Task_Name - @item.Status </a> <a href="/Home/DeleteWork/@item.Id">❌</a> <a href="/Home/UpdateWork">Update</a></li>
+
+	}
+	</ul>
+
+
+	<form action="/Home/AddWork" method="post">
+	<input type="text" name="Id" id="Id" value="" />
+	<input type="text" name="Task_Name" id="Task_Name" value="" />
+	<input type="text" name="Status" id="Status" value="" />
+	<input type="submit" name="name" value="Submit" />
+	</form>
+*@
+<style>
+	#list1 .form-control {
+		border-color: transparent;
+	}
+
+		#list1 .form-control:focus {
+			border-color: transparent;
+			box-shadow: none;
+		}
+
+	#list1 .select-input.form-control[readonly]:not([disabled]) {
+		background-color: #fbfbfb;
+	}
+</style>
+<section class="vh-100">
+	<div class="container py-5 h-100">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+			<div class="col">
+				<div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+					<div class="card-body py-4 px-4 px-md-5">
+
+						<p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+							<i class="fas fa-check-square me-1"></i>
+							<u style="text-decoration:none">TO-DO List</u>
+						</p>
+
+						<div class="pb-2">
+							<div class="card">
+								<div class="card-body">
+									<div class="d-flex flex-row align-items-center">
+										<a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i class="fas fa-calendar-alt fa-lg me-3"></i></a>
+										<div>
+											<form action="/Home/AddWork" method="post">
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text" id="inputGroup-sizing-default">Id</span>
+													</div>
+													<input type="text" class="form-control" style="margin:3px; background-color:#EFF1F2" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Id" id="Id" value="">
+												</div>
+
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text" id="inputGroup-sizing-default">Task</span>
+													</div>
+													<input type="text" class="form-control" style="margin:3px; background-color:#EFF1F2" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Task_Name" id="Task_Name" value="">
+												</div>
+
+
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text" id="inputGroup-sizing-default">Status</span>
+													</div>
+													<input type="text" class="form-control" style="margin:3px; background-color:#EFF1F2" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Status" id="Status" value="">
+												</div>
+
+												<input type="submit" class="btn btn-primary" name="name" value="Submit" />
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr class="my-4">
+						<ul class="list-group list-group-horizontal rounded-0 mb-2">
+
+							<table class="table table-hover">
+
+								<thead>
+									<tr>
+										<th scope="col">No</th>
+										<th scope="col">Task Name</th>
+										<th scope="col">Status</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								@foreach (var item in Model.Works)
+								{
+									<tbody>
+										<tr>
+											<th scope="row">@item.Id</th>
+											<td>@item.Task_Name</td>
+											<td>@item.Status</td>
+											<td>
+												<a href="/Home/DeleteWork/@item.Id">❌</a>
+											</td>
+										</tr>
+									</tbody>
+								}
+							</table>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
